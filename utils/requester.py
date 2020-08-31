@@ -1,6 +1,7 @@
 import urllib.request as urllib2
 import time
 
+# 封装请求目标网页的功能
 def request(url: str) -> str:
     # url 判空
     if url is None:

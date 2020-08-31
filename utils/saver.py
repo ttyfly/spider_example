@@ -1,15 +1,12 @@
 import json, os
-from datetime import datetime, time
 from settings import SAVE_PATH
 
+# 如果设置的文件夹不存在，则自动创建
 if not os.path.exists(SAVE_PATH):
     os.makedirs(SAVE_PATH)
 
-def save(data: dict) -> str:
-    # 从 data 中获取相关参数，生成文件名
-    # 这里使用了 python datetime，请查阅 python 官方文档，了解这些函数的用法
-    filename = data['name'] + '-' + datetime.fromisoformat(data['generated_at']).strftime('%Y-%m-%d-%H-%M-%S') + '.json'
-
+# 封装将字典类型保存为 json 文件的功能
+def save(filename: str, data: dict) -> str:
     # 拼接出文件路径
     # 请百度了解「绝对路径」和「相对路径」的区别，以及路径中「.」和「..」的含义
     filepath = os.path.join(SAVE_PATH, filename)

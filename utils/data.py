@@ -1,5 +1,5 @@
 from utils.saver import save
-from datetime import datetime
+from datetime import datetime, time
 
 # 这里将要获取的数据定义为一个类
 # 请百度了解什么是「面向对象」，以及「类」和「对象」的区别
@@ -18,13 +18,17 @@ class Data:
     def add(self, item: dict):
         self.data.append(item)
 
-    ## 直接调用 saver，将对象信息保存为 json
+    ## 保存数据为 json 文件
     def save(self):
-        save(self.__dict__)
+        # 生成文件名。这里使用了 python datetime，请查阅 python 官方文档，了解这些函数的用法
+        filename = self.name + '-' + datetime.fromisoformat(self.generated_at).strftime('%Y-%m-%d-%H-%M-%S') + '.json'
+        # 直接调用 saver，将对象信息保存为 json
+        save(filename, self.__dict__)
     
-    ## 排序函数，请百度了解 python list 的 sort 方法，以及什么是「字典序」
+    ## 按规定字段顺序排序 data 条目
     def sort(self, order: str, reverse: bool=False):
         self.order = order + (' reversed' if reverse else '')
+        # 直接调用 python 的排序函数。请百度了解 python list 的 sort 方法，以及什么是「字典序」
         def takeItem(data):
             return data[order]
         self.data.sort(key=takeItem, reverse=reverse)
