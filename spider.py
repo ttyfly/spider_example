@@ -22,7 +22,7 @@ class Spider:
             data.save()
     
     ## 使能爬虫
-    def enable(self, name):
+    def enable(self, name: str):
         self.enabled.append(name)
 
     ## 使能所有爬虫
@@ -30,7 +30,7 @@ class Spider:
         self.enabled = [name for name in self.spiders]
 
     ## 关闭爬虫
-    def disable(self, name):
+    def disable(self, name: str):
         self.enabled.remove(name)
 
     ## 关闭所有爬虫
