@@ -24,12 +24,16 @@ def spider() -> Data:
     # 下面有关 BeautifulSoup 的部分，请对照武大要闻网站源码和 BeautifulSoup 文档阅读
     div_list = soup.find_all('div', class_='infotitle')
 
-    data = Data('武大要闻')  # 获得 Data 对象，请先看完 utils.data，再继续阅读
+    # 获得 Data 对象，请先看完 utils.data，再继续阅读
+    data = Data('武大要闻')  
+
+    # 遍历获取到的全文 urls
     for url in [base_url + div.a['href'] for div in div_list if div.a is not None]:
         html = request(url)
         if html is None:
             print('Requesting ' + url + ' failed.')
             continue
+
         soup = BeautifulSoup(html, 'html.parser', from_encoding='utf-8')
 
         title = soup.find('div', class_='news_title').string

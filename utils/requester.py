@@ -1,5 +1,6 @@
 import urllib.request as urllib2
 import time
+from settings import CRAW_INTERVAL_SECS
 
 # 封装请求目标网页的功能
 def request(url: str) -> str:
@@ -7,8 +8,8 @@ def request(url: str) -> str:
     if url is None:
         return None
     
-    # 暂停 0.1 秒，以免给网站造成压力
-    time.sleep(0.1)
+    # 暂停一段时间，降低给网站造成的压力
+    time.sleep(CRAW_INTERVAL_SECS)
 
     # 发送请求
     # 请百度了解什么是 url

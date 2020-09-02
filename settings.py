@@ -5,5 +5,6 @@
 import os
 
 SAVE_PATH = os.path.join(os.getcwd(), 'data')   # 配置输出文件夹
+CRAW_INTERVAL_SECS = 0.1                        # 配置请求间隔
 
 # 有时，我们还可以使用环境变量进行配置，请百度了解什么是环境变量，以及它在 windows 和 linux 中的设置方法
