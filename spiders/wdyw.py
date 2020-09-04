@@ -44,12 +44,12 @@ def spider() -> Data:
         # 这里用到了 python datetime，请查阅 python 官方文档，了解这些函数的用法
         # 这里还用到了正则表达式，请百度学习正则表达式的相关知识
         data.add({
-            'title': re.search(r'\S+',title).group(),
+            'title': title.strip(),
             'date': datetime.fromisoformat(
                         re.search(r'发布时间：(\d{4}-\d{2}-\d{2}\s\d{2}:\d{2})', attrib).group(1)
                     ).isoformat(timespec='seconds'),
             'from': re.search(r'来源：(\S*)', attrib).group(1),
-            'content': content,
+            'content': content.strip(),
             'source_url': url
         })
     
