@@ -17,7 +17,7 @@ def request(url: str) -> str:
 
     # 假装自己是浏览器
     # 请百度了解什么是 http header，header的作用，以及有哪些典型的 header
-    request.add_header('user-agent', 'Mozilla/5.0')
+    request.add_header('user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36')
 
     # 获取响应信息
     response = urllib2.urlopen(request)

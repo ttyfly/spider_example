@@ -29,6 +29,4 @@ class Data:
     def sort(self, order: str, reverse: bool=False):
         self.order = order + (' reversed' if reverse else '')
         # 直接调用 python 的排序函数。请百度了解 python list 的 sort 方法，以及什么是「字典序」
-        def takeItem(data):
-            return data[order]
-        self.data.sort(key=takeItem, reverse=reverse)
+        self.data.sort(key=lambda x: x[order], reverse=reverse)
